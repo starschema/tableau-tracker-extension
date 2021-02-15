@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Ensures proper page width and zoom level on mobile devices -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
+  <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+  <link rel="shortcut icon" href="https://starschema.com/wp-content/uploads/2017/01/favicon.png"/>
+  <link rel="stylesheet" href="./build/vendor/slick.js/slick/slick.css" media="all" />
+  <link rel="stylesheet" href="./build/css/style.min.css" media="all" />
+
+  <title>Starschema Tableau Usage Tracker Configuration</title>
+
+  <style>
+    body {
+      font-family: "Varela Round", sans-serif, monospace;
+    }
+
+    h4 {
+      margin-top:10px;
+      margin-bottom: 10px;
+      padding-bottom: 2px;
+      border-bottom: 1px solid rgba(23, 23, 23, 0.1);
+    }
+
+    .help-text { font-size: 0.85em; color: #999; }
+
+    .settings-table-body input { width: 100%; }
+
+    .save-btn {
+      max-width: 190px;
+      float: right;
+      margin-right: 20px;
+    }
+
+    i.fa {
+      width: 20px;
+      text-align: center;
+    }
+
+    .collapse-content {
+      display: none;
+      padding : 5px;
+    }
+
+    .toggle-icon {
+      float: right;
+    }
+
+    .label-title {
+      display: flex;
+    }
+
+    a.tooltip {
+      margin-left: 0;
+      margin-right: auto;
+      margin-top: -5px;
+      margin-bottom: auto;
+    }
+    .validation-messages {
+      margin: 0.5em auto;
+      width: auto;
+      background: #fcc;
+      color: red;
+      border:2px solid red;
+      padding: 1em;
+    }
+
+  </style>
+</head>
+<body>
+<div class="clearfix">
+  <div class="content-container">
+    <div class="grid--9">
+      <h1>
+        Tableau Usage Tracker
+      </h1>
+      <small>
+        This Extension tracks anonymized user interactions.
+      </small>
+    </div>
+  </div>
+  <hr />
+  <div class="content-container">
+    <h4>Tracker settings</h4>
+    <div class="form form--centered">
+      <div class="fields">
+        <div class="form__field form-field">
+          <div class="label-title">
+            <label class="form-field__label" for="deploymentId">Deployment ID</label>
+            <a class="tooltip tooltip--right" href="#">
+              <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+              <div class="tooltip__text">The DeploymentId you received during registration.</div>
+            </a>
+          </div>
+          <input class="form__control form-field__control" type="text" name="deploymentId" id="deploymentId" placeholder="Example-Deployment-ID" data-send="true">
+          <h6 id="deploymentId-validation" class="validation-messages" style="display:none"></h6>
+          <div class="form__intro-description help-text">
+            <a href="/" target="_blank">I don't have a DeploymentId. I want to create one.</a>
+          </div>
+        </div>
+
+
+        <div class="form__field form-field">
+          <div class="label-title">
+            <label class="form-field__label" for="workbookName">Workbook name</label>
+            <a class="tooltip tooltip--right" href="#">
+              <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+              <div class="tooltip__text">For reporting: this workbook will be available in your reports with this name</div>
+            </a>
+          </div>
+          <input class="form__control form-field__control" type="text" name="workbookName" id="workbookName" placeholder="Example-Workbook" data-send="true">
+          <h6 id="workbook-validation" class="validation-messages" style="display:none"></h6>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="clearfix">
+      <h4 class="collapsable">
+        Extra settings <i class="fa fa-angle-down toggle-icon" aria-hidden="true"></i>
+      </h4>
+      <div class="collapse-content">
+        <small>These key/values pairs will be sent along every event.</small>
+        <table class="table" id="settings-table">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Value</th>
+            <th>
+            </th>
+          </tr>
+          </thead>
+          <tbody id="settings-table-body"></tbody>
+        </table>
+
+        <div>
+          <a href="#" id="add-custom-metadata" class="link link--expand" >Add new extra field</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="clearfix">
+      <div class="save-btn">
+        <button class="cta cta--secondary cta--orange" id="closeButton">Save</button>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="build/vendor/jquery/dist/jquery.min.js"></script>
+<script src="build/vendor/jquery-ui/jquery-ui.min.js"></script>
+<script src="build/js/vendor.js"></script>
+<script src="build/js/scripts.min.js"></script>
+
+<script src="./tableau-extensions-0.latest.min.js"></script>
+<script src="./underscore-min.js"></script>
+<script src="./configure.js"></script>
+</body>
+</html>

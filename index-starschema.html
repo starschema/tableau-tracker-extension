@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="config-page" content="/configure-starschema.html">
+
+    <title>Starschema Tableau Usage Tracker extension</title>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
+    <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="./build/vendor/slick.js/slick/slick.css" media="all" />
+    <link rel="stylesheet" href="./build/css/style.min.css" media="all" />
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+
+    <!-- Extensions Library (this will be hosted on a CDN eventually) -->
+    <script src="./tableau-extensions-0.latest.min.js"></script>
+
+    <!-- Utilities -->
+    <script src="./underscore-min.js"></script>
+
+    <!-- Our extension's code -->
+    <script src="./config.js"></script>
+    <script src="./tabusage-tracker.js"></script>
+    <!-- IDENTIFY YOURSELF
+    <script src="./viz.js"></script>
+    -->
+
+    <style>
+      body {
+        font-family: "Varela Round", sans-serif, monospace;
+        font-size: 10px;
+      }
+      .status-pill { padding: 5px 15px; border-radius: 0.2em; }
+      .status-ok { background-color: #0f7; color: white;  }
+      .status-error { background-color: #f20; color: white; }
+
+      #deployment-id-readout { font-size: 8px; padding: .5em 0; }
+      #deployment-id-readout { display: none; }
+
+      .logo-image { max-width:100%; }
+      .logo { margin:.4em 0; }
+
+      @keyframes fade {
+          from { opacity: 1.0; }
+          50% { opacity: 0.1; }
+          to { opacity: 1.0; }
+      }
+
+      @-webkit-keyframes fade {
+          from { opacity: 1.0; }
+          50% { opacity: 0.1; }
+          to { opacity: 1.0; }
+      }
+
+      .blink {
+        animation:fade 2000ms infinite;
+        -webkit-animation:fade 2000ms infinite;
+      }
+
+      .green {
+        color: #4caf50;
+      }
+
+      .orange {
+        color: #ffc107;
+      }
+
+      .red {
+        color: #f44336;
+      }
+
+      #statusText {
+        font-size: 11px;
+      }
+
+      .settings-button {
+        max-width: 50px;
+        display: inline-block;
+        margin-right: 0;
+        margin-left: auto;
+        cursor: pointer;
+        font-size: 12px;
+      }
+
+      .settings-button i {
+        margin: auto;
+      }
+
+      .settings-button:hover {
+        text-decoration: none;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+    </style>
+  </head>
+  <body onload="initViz()">
+    <div class="container">
+      <i class="fa fa-circle orange" aria-hidden="true" id="statusCircle"></i>
+      <span id="statusText">Action required!</span>
+
+      <span><a class="settings-button" id="configureButton"><i class="fa fa-cog" aria-hidden="true"></i></a></span>
+
+      <p>Use in background</p>
+      <p>
+        <ol>
+          <li>Configure Extension by clicking the cog icon, or More Options &rarr; Configure</li>
+          <li>Make this float (More Options &rarr; Floating)</li>
+          <li>Resize this window to 1px (or ~15px if you want to see the indicator)</li>
+        </ol>
+      </p>
+
+      <div id="deployment-id-readout"></div>
+
+    </div>
+  </body>
+</html>
